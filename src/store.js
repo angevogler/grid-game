@@ -18,16 +18,26 @@ function reducer(state, action) {
 
     // Move in all four directions.
     if (action.type === 'MOVE') {
-        // const next = Object.assign({}, state); // copy properties of 'state' into a new object
-        // next.gas--;
-        // next.score++;
+      let gasPrice = 1;
 
-        // return next;
+      const updateVisted = state.visited.map( (location) => {
+        const nextX = state.x + action.payload.x;
+        const nextY = state.y + action.payload.y;
+
+        if (location.x === nextX && location.y === nextY) {
+          gasPrice = 2;
+        }
+      })
+
         return {
-            gas: state.gas - 1,
+            gas: state.gas - gasPrice,
             score: state.score + 1,
             x: state.x + action.payload.x,
             y: state.y + action.payload.y,
+            visited: state.visited.concat([{
+              x: state.x,
+              y: state.y,
+            }])
         };
     }
 
@@ -40,4 +50,5 @@ export const store = createStore(reducer, {
     score: 0,
     x: 1,
     y: 3,
+    visited: [],
 });

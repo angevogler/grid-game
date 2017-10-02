@@ -7,6 +7,27 @@ import { move } from '../actions';
 class ControlPanel extends Component {
 
     render() {
+      let downDisable = true;
+      let upDisable = true;
+      let leftDisable = true;
+      let rightDisable = true;
+
+      if (this.props.y > 1 && this.props.gas > 0) {
+        downDisable = false;
+      }
+
+      if (this.props.y < 5 && this.props.gas > 0) {
+        upDisable = false;
+      }
+
+      if (this.props.x > 1 && this.props.gas > 0) {
+        leftDisable = false;
+      }
+
+      if (this.props.x < 5 && this.props.gas > 0) {
+        rightDisable = false;
+      }
+
         return (
             <div>
                 <p>Gas: {this.props.gas}</p>
@@ -15,14 +36,14 @@ class ControlPanel extends Component {
 
                 <section>
                     <div>
-                        <button onClick={() => this.props.up()}>Up</button>
+                        <button onClick={() => this.props.up()} disabled={upDisable}>Up</button>
                     </div>
                     <div>
-                        <button onClick={() => this.props.left()}>Left</button>
-                        <button onClick={() => this.props.right()}>Right</button>
+                        <button onClick={() => this.props.left()} disabled={leftDisable}>Left</button>
+                        <button onClick={() => this.props.right()} disabled={rightDisable}>Right</button>
                     </div>
                     <div>
-                        <button onClick={() => this.props.down()}>Down</button>
+                        <button onClick={() => this.props.down()} disabled={downDisable}>Down</button>
                     </div>
                 </section>
             </div>

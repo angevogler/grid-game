@@ -1,0 +1,43 @@
+header {
+  margin: 0% 5%;
+  border-bottom: 7px double #042744;
+
+  h1 {
+    color: #042744;
+    text-align: center;
+  }
+}
+
+main {
+  margin: 1% 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cell {
+  border: 3px solid #042744;
+  background-color: #9ECDE5;
+  color: #9ECDE5;
+  height: 100px;
+  width: 100px;
+}
+
+.active-cell {
+  border: 3px solid #042744;
+  background-color: #AD243D;
+  height: 100px;
+  width: 100px;
+  color: #AD243D;
+}
+
+.visited {
+  border: 3px solid #042744;
+  background-color: #628395;
+  height: 100px;
+  width: 100px;
+  color: #628395;
+}
+
+.row {
+  display: flex;
+}
